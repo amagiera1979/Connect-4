@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+* {
+  margin-left: auto;
+  margin-right: auto;
+}
+body {
+  background-color: rgb(221, 212, 200);
+  font-family: 'Patrick Hand', cursive;
+}
+h3 {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.container {
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.player {
+  min-width: 100px;
+  min-height: 120px;
+  display: inline-block;
+  text-align: center;
+  background-color: antiquewhite;
+  border: 2px solid rgb(117, 82, 65);
+  border-radius: 10px;
+  margin-left: 25%;
+  margin-bottom: 40px;
+}
+
+.c-one {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: red;
+}
+
+.c-two {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: rgb(241, 207, 10);
+}
+
+.board {
+  width: 520px;
+  height: 400px;
+  background-color: antiquewhite;
+  border-radius: 10px;
+}
