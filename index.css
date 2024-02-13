@@ -103,3 +103,7 @@ h3 {
   font-family: inherit;
   font-size: 20px;
 }
+.restart:hover{
+  background-color: rgb(212, 197, 177);
+  border: 2px solid rgb(165, 129, 111);
+}
