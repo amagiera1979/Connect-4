@@ -27,7 +27,7 @@ h3 {
   border: 2px solid rgb(117, 82, 65);
   border-radius: 10px;
   /* margin-left: 20%; */
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 }
 
 .p-one {
@@ -46,6 +46,11 @@ h3 {
   width: 30px;
   border-radius: 50%;
   background-color: rgb(241, 207, 10);
+}
+
+.road {
+  width: 580px;
+  height: 60px;
 }
 
 .rows {
@@ -103,7 +108,7 @@ h3 {
   font-family: inherit;
   font-size: 20px;
 }
-.restart:hover{
+.restart:hover {
   background-color: rgb(212, 197, 177);
   border: 2px solid rgb(165, 129, 111);
 }
