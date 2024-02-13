@@ -20,14 +20,14 @@ function createCirkleYellow() {
     cirkleRed.style.borderRadius = '50%';
 }
 
-function showPlayer(){
-   createCirkleRed();
+// function showPlayer(){
+//    createCirkleRed();
   
 
 
-}
+// }
 
-window.addEventListener('click', e=>{
-    console.log(e.target, e.currentTarget)
+window.player1.addEventListener('click', e=>{
+    console.log(e.clientX, e.currentTarget, e.type, e.timeStamp, screenX)
    })
-window.addEventListener('load', showPlayer)
+// window.addEventListener('load', showPlayer)
