@@ -33,11 +33,12 @@ h3 {
   min-height: 120px;
   display: inline-block;
   text-align: center;
-  background-color: antiquewhite;
+  background-color:antiquewhite;
   border: 2px solid rgb(117, 82, 65);
   border-radius: 10px;
   /* margin-left: 20%; */
   margin-bottom: 10px;
+  
 }
 
 .p-one {
@@ -129,6 +130,7 @@ animation-duration: 1s;
   border-radius: 50%;
   position:absolute;
   display: inline;
+  /* align-content: end; */
   cursor: pointer;
   animation-name: show;
   animation-duration: 1s;
