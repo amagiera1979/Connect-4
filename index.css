@@ -62,6 +62,8 @@ h3 {
 .road {
   width: 580px;
   height: 60px;
+  border: 1px dotted black;
+  /* position:absolute; */
 }
 
 .rows {
@@ -83,6 +85,17 @@ h3 {
   border-radius: 50%;
   display: inline-flex;
 }
+
+.arrow{
+  width: 0;
+	height: 0;
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+	border-top: 20px solid white;
+	margin: 40px auto 0;
+  margin-top: 80px;
+}
+
 .board {
   width: 520px;
   height: 450px;
