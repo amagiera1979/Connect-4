@@ -9,11 +9,11 @@ body {
 }
 
 @keyframes show {
-  from{
+  from {
     opacity: 0;
   }
-  to{
-    opacity:1;
+  to {
+    opacity: 1;
   }
 }
 
@@ -33,12 +33,11 @@ h3 {
   min-height: 120px;
   display: inline-block;
   text-align: center;
-  background-color:antiquewhite;
+  background-color: antiquewhite;
   border: 2px solid rgb(117, 82, 65);
   border-radius: 10px;
   /* margin-left: 20%; */
   margin-bottom: 10px;
-  
 }
 
 .p-one {
@@ -72,9 +71,8 @@ h3 {
   height: 10px;
   border-radius: 10px 10px 0 0;
   transform: skewX(-25deg);
-
   background-color: rgb(214, 202, 186);
-  margin-top: 50px;
+  
 }
 
 .row {
@@ -83,17 +81,24 @@ h3 {
   height: 10px;
   margin: 0 13px;
   border-radius: 50%;
-  display: inline-flex;
+  /* display: inline-flex; */
 }
 
-.arrow{
+.arrow {
   width: 0;
-	height: 0;
-	border-left: 20px solid transparent;
-	border-right: 20px solid transparent;
-	border-top: 20px solid white;
-	margin: 40px auto 0;
-  margin-top: 80px;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid white;
+  /* margin: 40px auto 0; */
+  /* margin-top: px; */
+  display:inline-flex;
+  /* justify-content:space-between; */
+  /* align-self: flex-end; */
+  flex-direction: row;
+  margin: 0 17px;
+  z-index: 4;
+  visibility:hidden;
 }
 
 .board {
@@ -122,32 +127,32 @@ h3 {
   box-shadow: inset 0px -9px 2px -1px rgba(66, 68, 90, 1);
 }
 
-.red-disc{
-background-color: red;
-width: 50px;
-height: 50px;
-border: 10px solid rgb(224, 14, 14);
-border-radius: 50%;
-position:absolute;
-cursor: pointer;
-animation-name: show;
-animation-duration: 1s;
-/* transform: translate(-50%, -50%);   */
+.red-disc {
+  background-color: red;
+  width: 50px;
+  height: 50px;
+  border: 10px solid rgb(224, 14, 14);
+  border-radius: 50%;
+  position: absolute;
+  cursor: pointer;
+  animation-name: show;
+  animation-duration: 1s;
+  /* transform: translate(-50%, -50%);   */
 }
 
-.yellow-disc{
-  background-color: rgb(241, 207, 10);;
+.yellow-disc {
+  background-color: rgb(241, 207, 10);
   width: 50px;
   height: 50px;
   border: 10px solid rgb(212, 183, 14);
   border-radius: 50%;
-  position:absolute;
+  position: absolute;
   display: inline;
   /* align-content: end; */
   cursor: pointer;
   animation-name: show;
   animation-duration: 1s;
-  }
+}
 
 .restart {
   margin-top: 50px;

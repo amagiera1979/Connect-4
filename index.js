@@ -4,6 +4,9 @@ const movePlayer1 = document.querySelector('.score-p1');
 const movePlayer2 = document.querySelector('.score-p2');
 const road = document.querySelector('.road');
 const rowDrop = document.querySelectorAll('.row');
+const rows = document.querySelector('.rows')
+const arrow = document.querySelectorAll('.arrow')
+
 
 function onDragCirkle(e) {
   console.log(e.pageX, e.pageY, 'dragging');
@@ -44,14 +47,14 @@ function createCirkleRed() {
   // })
   rowDrop.forEach(r=>{
     r.addEventListener('dragover', e=>{
-      const arrow = document.createElement('div');
-      arrow.classList = 'arrow'
-      if(cirkleRed.clientX >=184&&cirkleRed.clientY>=239 ) {
-// arrow.style.marginLeft ='20px !importand'
-arrow.style.position = 'flex';
-arrow.style.left = '5%'
+      arrow[0].style.visibility = 'visible';
+      // arrow.dragabble = 'true'
+      if(cirkleRed.clientX >=184&&cirkleRed.clientY>=300 ) {
+// arrow[0].style.visibility = 'visible';
+
+
       }
-      road.appendChild(arrow);
+      
     })
   })
 
