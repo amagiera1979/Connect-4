@@ -4,30 +4,51 @@ const movePlayer1 = document.querySelector('.score-p1');
 const movePlayer2 = document.querySelector('.score-p2');
 const road = document.querySelector('.road');
 const rowDrop = document.querySelectorAll('.row');
-const rows = document.querySelector('.rows')
-const arrow = document.querySelectorAll('.arrow')
+const rows = document.querySelector('.rows');
+const arrow = document.querySelectorAll('.arrow');
+const arDrop = document.querySelectorAll('.ar');
 
-
-function onDragCirkle(e) {
-  console.log(e.pageX, e.pageY, 'dragging');
-}
-
-// function dropPlace(e){
-// console.log(e.value, e.target)
-
+// function onDragCirkle(e) {
+//   console.log(e.pageX, e.pageY, 'dragging');
 // }
 
+// Pionek żółty z animacją przeciągania i upuszczania
 function createCirkleYellow() {
   const cirkleYellow = document.createElement('div');
   cirkleYellow.className = 'yellow-disc';
-  cirkleYellow.draggable = 'true'
+  cirkleYellow.draggable = 'true';
   player2.style.backgroundColor = 'bisque';
   road.appendChild(cirkleYellow);
+  let dragged;
+  // cirkleRed.addEventListener('drag', onDragCirkle);
+
+  cirkleYellow.addEventListener('dragstart', e => {
+    dragged = e.target;
+    e.dataTransfer.effectAllowed = 'move';
+  });
+
+  // Wyświetlanie strzałek po przeciągnięciu pionka w odpow.miejsce
+  arDrop.forEach((ar, index) => {
+    ar.addEventListener('dragover', e => {
+      console.log(e.target);
+
+      arrow.forEach((a, item) => {
+        console.log(index, item);
+        index === item
+          ? (a.style.visibility = 'visible')
+          : (a.style.visibility = 'hidden');
+      });
+
+      e.preventDefault();
+    });
+  });
 }
+
+// Pionek czerwony z animacją przeciągania i upuszczania
 function createCirkleRed() {
   const cirkleRed = document.createElement('div');
   cirkleRed.className = 'red-disc';
-  cirkleRed.draggable = 'true'
+  cirkleRed.draggable = 'true';
   player1.style.backgroundColor = 'bisque';
   road.appendChild(cirkleRed);
   let dragged;
@@ -35,33 +56,27 @@ function createCirkleRed() {
 
   cirkleRed.addEventListener('dragstart', e => {
     dragged = e.target;
-    e.dataTransfer.effectAllowed ='move'
-    // console.log(e.target, e.dataTransfer)
-    // cirkleRed.style.opacity = '.9';
-    console.log(e.clientX, e.clientY)
+    e.dataTransfer.effectAllowed = 'move';
+  });
+  // Wyświetlanie strzałek po przeciągnięciu pionka w odpow.miejsce
+  arDrop.forEach((ar, index) => {
+    ar.addEventListener('dragover', e => {
+      console.log(e.target);
+
+      arrow.forEach((a, item) => {
+        console.log(index, item);
+        index === item
+          ? (a.style.visibility = 'visible')
+          : (a.style.visibility = 'hidden');
+      });
+
+      e.preventDefault();
+    });
   });
 
-  // cirkleRed.addEventListener('dragover', e=>{
-    
-  //   e.preventDefault();
-  // })
-  rowDrop.forEach(r=>{
-    r.addEventListener('dragover', e=>{
-      arrow[0].style.visibility = 'visible';
-      // arrow.dragabble = 'true'
-      if(cirkleRed.clientX >=184&&cirkleRed.clientY>=300 ) {
-// arrow[0].style.visibility = 'visible';
-
-
-      }
-      
-    })
-  })
-
-  cirkleRed.addEventListener('dragend', e =>{
-    e.dataTransfer.dropEffect ='move'
-    console.log(e.clientX, e.clientY)
-  })
+  cirkleRed.addEventListener('dragend', e => {
+    e.dataTransfer.dropEffect = 'move';
+  });
 
   // cirkleRed.addEventListener('dragend', e => {
   //   cirkleRed.style.opacity = '1';
@@ -74,6 +89,7 @@ function showPlayer() {
 }
 
 // document.addEventListener('click', e => {
-//   console.log(e.pageX, e.pageY);
+//   // console.log(e.pageX, e.pageY);
+//   // console.log(e.clientX, e.clientY)
 // });
 window.addEventListener('load', showPlayer);
