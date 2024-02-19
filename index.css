@@ -8,14 +8,14 @@ body {
   font-family: 'Patrick Hand', cursive;
 }
 
-@keyframes show {
+/* @keyframes show {
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
   }
-}
+} */
 
 h3 {
   text-align: center;
@@ -148,8 +148,9 @@ h3 {
   border-radius: 50%;
   position: absolute;
   cursor: pointer;
-  animation-name: show;
-  animation-duration: 1s;
+  /* animation-name: fall;
+  animation-duration: 1s; */
+
   /* transform: translate(-50%, -50%);   */
 }
 
@@ -163,8 +164,8 @@ h3 {
   display: inline;
   /* align-content: end; */
   cursor: pointer;
-  animation-name: show;
-  animation-duration: 1s;
+  /* animation-name: show;
+  animation-duration: 1s; */
 }
 
 .restart {
@@ -180,4 +181,19 @@ h3 {
 .restart:hover {
   background-color: rgb(212, 197, 177);
   border: 2px solid rgb(165, 129, 111);
+}
+
+@keyframes fall {
+  from{
+    transform: translateY(200);
+  }
+  to{
+    transform: translateY(700);
+  }
+}
+
+.animation{
+  animation-name: fall;
+  animation-duration: 1s;
+  
 }

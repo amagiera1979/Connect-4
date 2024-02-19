@@ -13,7 +13,7 @@ const arDrop = document.querySelectorAll('.ar');
 // }
 function showDropArrow(index) {
   arrow.forEach((a, item) => {
-    console.log(index, item);
+    // console.log(index, item);
     index === item
       ? (a.style.visibility = 'visible')
       : (a.style.visibility = 'hidden');
@@ -38,7 +38,7 @@ function createCirkleYellow() {
   // Wyświetlanie strzałek po przeciągnięciu pionka w odpow.miejsce
   arDrop.forEach((ar, index) => {
     ar.addEventListener('dragover', e => {
-      console.log(e.target);
+      // console.log(e.target);
       showDropArrow(index);
       e.preventDefault();
     });
@@ -62,15 +62,29 @@ function createCirkleRed() {
   // Wyświetlanie strzałek po przeciągnięciu pionka w odpow.miejsce
   arDrop.forEach((ar, index) => {
     ar.addEventListener('dragover', e => {
-      console.log(e.target);
+      // console.log(e.target);
       showDropArrow(index);
+
+      cirkleRed.addEventListener('drop', e=>{
+        console.log('drop');
+        cirkleRed.classList = 'animation';
+      })
       e.preventDefault();
     });
   });
 
   cirkleRed.addEventListener('dragend', e => {
     e.dataTransfer.dropEffect = 'move';
+    // cirkleRed.addEventListener('drop', e=>{
+    //   console.log('drop');
+    //   cirkleRed.classList.add('.animation');
+    // })
+    // arrow.style.visibility = 'hidden';
   });
+
+  // cirkleRed.addEventListener('drop', e=>{
+  //   cirkleRed.classList.add('.animation');
+  // })
 
   // cirkleRed.addEventListener('dragend', e => {
   //   cirkleRed.style.opacity = '1';
@@ -78,7 +92,7 @@ function createCirkleRed() {
 }
 
 function showPlayer() {
-  createCirkleYellow();
+  // createCirkleYellow();
   createCirkleRed();
 }
 
