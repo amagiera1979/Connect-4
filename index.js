@@ -11,6 +11,14 @@ const arDrop = document.querySelectorAll('.ar');
 // function onDragCirkle(e) {
 //   console.log(e.pageX, e.pageY, 'dragging');
 // }
+function showDropArrow(index) {
+  arrow.forEach((a, item) => {
+    console.log(index, item);
+    index === item
+      ? (a.style.visibility = 'visible')
+      : (a.style.visibility = 'hidden');
+  });
+}
 
 // Pionek żółty z animacją przeciągania i upuszczania
 function createCirkleYellow() {
@@ -31,14 +39,7 @@ function createCirkleYellow() {
   arDrop.forEach((ar, index) => {
     ar.addEventListener('dragover', e => {
       console.log(e.target);
-
-      arrow.forEach((a, item) => {
-        console.log(index, item);
-        index === item
-          ? (a.style.visibility = 'visible')
-          : (a.style.visibility = 'hidden');
-      });
-
+      showDropArrow(index);
       e.preventDefault();
     });
   });
@@ -62,14 +63,7 @@ function createCirkleRed() {
   arDrop.forEach((ar, index) => {
     ar.addEventListener('dragover', e => {
       console.log(e.target);
-
-      arrow.forEach((a, item) => {
-        console.log(index, item);
-        index === item
-          ? (a.style.visibility = 'visible')
-          : (a.style.visibility = 'hidden');
-      });
-
+      showDropArrow(index);
       e.preventDefault();
     });
   });
@@ -84,7 +78,7 @@ function createCirkleRed() {
 }
 
 function showPlayer() {
-  // createCirkleYellow();
+  createCirkleYellow();
   createCirkleRed();
 }
 
