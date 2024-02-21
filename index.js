@@ -6,7 +6,7 @@ const road = document.querySelector('.road');
 const rowDrop = document.querySelectorAll('.row');
 const rows = document.querySelector('.rows');
 const arrow = document.querySelectorAll('.arrow');
-const arDrop = document.querySelectorAll('.ar');
+let arDrop = document.querySelectorAll('.ar');
 
 // function onDragCirkle(e) {
 //   console.log(e.pageX, e.pageY, 'dragging');
@@ -34,15 +34,6 @@ function createCirkleYellow() {
     dragged = e.target;
     e.dataTransfer.effectAllowed = 'move';
   });
-
-  // Wyświetlanie strzałek po przeciągnięciu pionka w odpow.miejsce
-  arDrop.forEach((ar, index) => {
-    ar.addEventListener('dragover', e => {
-      // console.log(e.target);
-      showDropArrow(index);
-      e.preventDefault();
-    });
-  });
 }
 
 // Pionek czerwony z animacją przeciągania i upuszczania
@@ -52,44 +43,42 @@ function createCirkleRed() {
   cirkleRed.draggable = 'true';
   player1.style.backgroundColor = 'bisque';
   road.appendChild(cirkleRed);
-  let dragged;
-  // cirkleRed.addEventListener('drag', onDragCirkle);
+
 
   cirkleRed.addEventListener('dragstart', e => {
-    dragged = e.target;
+    e.dataTransfer.clearData();
     e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.dropEffect = 'move';
+    e.dataTransfer.setData('text/plain', e.target.className);
+    // console.log(e.target.className, e.dataTransfer);
   });
-  // Wyświetlanie strzałek po przeciągnięciu pionka w odpow.miejsce
-  arDrop.forEach((ar, index) => {
-    ar.addEventListener('dragover', e => {
-      // console.log(e.target);
-      showDropArrow(index);
-
-      cirkleRed.addEventListener('drop', e=>{
-        console.log('drop');
-        cirkleRed.classList = 'animation';
-      })
-      e.preventDefault();
-    });
-  });
+  
 
   cirkleRed.addEventListener('dragend', e => {
     e.dataTransfer.dropEffect = 'move';
-    // cirkleRed.addEventListener('drop', e=>{
-    //   console.log('drop');
-    //   cirkleRed.classList.add('.animation');
-    // })
-    // arrow.style.visibility = 'hidden';
   });
-
-  // cirkleRed.addEventListener('drop', e=>{
-  //   cirkleRed.classList.add('.animation');
-  // })
-
-  // cirkleRed.addEventListener('dragend', e => {
-  //   cirkleRed.style.opacity = '1';
-  // });
 }
+
+// Wyświetlanie strzałek po przeciągnięciu pionka w odpow.miejsce
+arDrop.forEach((ar, index) => {
+    
+  ar.ondragover = e => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    showDropArrow(index);
+  };
+
+  ar.ondrop = e => {
+    e.preventDefault();
+    const data = e.dataTransfer.getData('text/plain');
+    console.log(e.target, data);
+    e.dataTransfer.dropEffect = 'move';
+    const addDiv = document.getElementsByClassName(data);
+   
+    e.target.appendChild(addDiv);
+    // e.ar.appendChild(document.getElementsByClassName(data))
+  };
+});
 
 function showPlayer() {
   // createCirkleYellow();
