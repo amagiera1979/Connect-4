@@ -24,15 +24,21 @@ function showDropArrow(index) {
 function createCirkleYellow() {
   const cirkleYellow = document.createElement('div');
   cirkleYellow.className = 'yellow-disc';
+  cirkleYellow.id = 'yellow-disc';
   cirkleYellow.draggable = 'true';
   player2.style.backgroundColor = 'bisque';
   road.appendChild(cirkleYellow);
-  let dragged;
-  // cirkleRed.addEventListener('drag', onDragCirkle);
-
+  
   cirkleYellow.addEventListener('dragstart', e => {
-    dragged = e.target;
+    e.dataTransfer.clearData();
     e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.dropEffect = 'move';
+    e.dataTransfer.setData('text/plain', e.target.className);
+  });
+
+  cirkleYellow.addEventListener('dragend', e => {
+    e.dataTransfer.dropEffect = 'move';
+    // cirkleRed.classList.add('animation')
   });
 }
 
@@ -40,10 +46,10 @@ function createCirkleYellow() {
 function createCirkleRed() {
   const cirkleRed = document.createElement('div');
   cirkleRed.className = 'red-disc';
+  cirkleRed.id = 'red-disc';
   cirkleRed.draggable = 'true';
   player1.style.backgroundColor = 'bisque';
   road.appendChild(cirkleRed);
-
 
   cirkleRed.addEventListener('dragstart', e => {
     e.dataTransfer.clearData();
@@ -52,16 +58,15 @@ function createCirkleRed() {
     e.dataTransfer.setData('text/plain', e.target.className);
     // console.log(e.target.className, e.dataTransfer);
   });
-  
 
   cirkleRed.addEventListener('dragend', e => {
     e.dataTransfer.dropEffect = 'move';
+    // cirkleRed.classList.add('animation')
   });
 }
 
 // Wyświetlanie strzałek po przeciągnięciu pionka w odpow.miejsce
 arDrop.forEach((ar, index) => {
-    
   ar.ondragover = e => {
     e.preventDefault();
     e.dataTransfer.dropEffect = 'move';
@@ -71,17 +76,15 @@ arDrop.forEach((ar, index) => {
   ar.ondrop = e => {
     e.preventDefault();
     const data = e.dataTransfer.getData('text/plain');
-    console.log(e.target, data);
     e.dataTransfer.dropEffect = 'move';
-    const addDiv = document.getElementsByClassName(data);
-   
+    const addDiv = document.getElementById(data);
+
     e.target.appendChild(addDiv);
-    // e.ar.appendChild(document.getElementsByClassName(data))
   };
 });
 
 function showPlayer() {
-  // createCirkleYellow();
+  createCirkleYellow();
   createCirkleRed();
 }
 
