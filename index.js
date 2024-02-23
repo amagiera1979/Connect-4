@@ -28,7 +28,7 @@ function createCirkleYellow() {
   cirkleYellow.draggable = 'true';
   player2.style.backgroundColor = 'bisque';
   road.appendChild(cirkleYellow);
-  
+
   cirkleYellow.addEventListener('dragstart', e => {
     e.dataTransfer.clearData();
     e.dataTransfer.effectAllowed = 'move';
@@ -38,7 +38,6 @@ function createCirkleYellow() {
 
   cirkleYellow.addEventListener('dragend', e => {
     e.dataTransfer.dropEffect = 'move';
-    // cirkleRed.classList.add('animation')
   });
 }
 
@@ -56,20 +55,25 @@ function createCirkleRed() {
     e.dataTransfer.effectAllowed = 'move';
     e.dataTransfer.dropEffect = 'move';
     e.dataTransfer.setData('text/plain', e.target.className);
-    // console.log(e.target.className, e.dataTransfer);
+    console.log(e.target.classList);
   });
 
   cirkleRed.addEventListener('dragend', e => {
     e.dataTransfer.dropEffect = 'move';
-    // cirkleRed.classList.add('animation')
   });
 }
+// Dodanie animacji spadania pionka
+function fallCirkle(cirkle) {
+  cirkle.classList.add('animation');
+  console.log(cirkle.classList);
+}
 
-// Wyświetlanie strzałek po przeciągnięciu pionka w odpow.miejsce
+// Wyświetlanie strzałek oraz przeciąganie i upuszczanie pionka
 arDrop.forEach((ar, index) => {
   ar.ondragover = e => {
     e.preventDefault();
     e.dataTransfer.dropEffect = 'move';
+    // Wyświetlanie strzałek po przeciągnięciu pionka w odpow.miejsce
     showDropArrow(index);
   };
 
@@ -80,11 +84,14 @@ arDrop.forEach((ar, index) => {
     const addDiv = document.getElementById(data);
 
     e.target.appendChild(addDiv);
+    console.log(e.clientY);
+    // Wywołanie f. spadania pionka
+    fallCirkle(addDiv);
   };
 });
 
 function showPlayer() {
-  createCirkleYellow();
+  // createCirkleYellow();
   createCirkleRed();
 }
 

@@ -139,6 +139,14 @@ h3 {
   -moz-box-shadow: inset 0px -9px 2px -1px rgba(66, 68, 90, 1);
   box-shadow: inset 0px -9px 2px -1px rgba(66, 68, 90, 1);
 }
+@keyframes fall {
+  0%{
+    transform: translateY(384);
+  }
+  100%{
+    transform: translateY(1500);
+  }
+}
 
 .red-disc {
   background-color: red;
@@ -181,15 +189,6 @@ h3 {
 .restart:hover {
   background-color: rgb(212, 197, 177);
   border: 2px solid rgb(165, 129, 111);
-}
-
-@keyframes fall {
-  from{
-    transform: translateY(200);
-  }
-  to{
-    transform: translateY(700);
-  }
 }
 
 .animation{
