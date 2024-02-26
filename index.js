@@ -63,9 +63,16 @@ function createCirkleRed() {
   });
 }
 // Dodanie animacji spadania pionka
-function fallCirkle(cirkle) {
+function fallCirkle(cirkle, ar, index) {
   cirkle.classList.add('animation');
-  console.log(cirkle.classList);
+  
+  switch(ar.index){
+    case 0: cirkle.style.translate = '-2px'; break;
+    case 1: cirkle.clientX = '-20px'; break;
+    case 6: cirkle.style.transform = 'translateX(-50em)'; break;
+  }
+  
+  console.log(cirkle.classList, cirkle.clientX, cirkle.clientY);
 }
 
 // Wyświetlanie strzałek oraz przeciąganie i upuszczanie pionka
@@ -82,11 +89,11 @@ arDrop.forEach((ar, index) => {
     const data = e.dataTransfer.getData('text/plain');
     e.dataTransfer.dropEffect = 'move';
     const addDiv = document.getElementById(data);
-
+// addDiv.style.rubyPosition= 'under'
     e.target.appendChild(addDiv);
-    console.log(e.clientY);
+    console.log(e.clientY, e.clientX);
     // Wywołanie f. spadania pionka
-    fallCirkle(addDiv);
+    fallCirkle(addDiv, ar, index);
   };
 });
 
