@@ -64,14 +64,14 @@ function createCirkleRed() {
 }
 // Dodanie animacji spadania pionka
 function fallCirkle(cirkle, ar, index) {
+  // cirkle.classList.add('animation');
+  
+  // switch(index){
+  //   case 0: cirkle.style.translate = '-2px'; break;
+  //   case 1: cirkle.clientX = '-20px'; break;
+  //   case 6: cirkle.style.transform = 'translateX(-15px)'; break;
+  // }
   cirkle.classList.add('animation');
-  
-  switch(ar.index){
-    case 0: cirkle.style.translate = '-2px'; break;
-    case 1: cirkle.clientX = '-20px'; break;
-    case 6: cirkle.style.transform = 'translateX(-50em)'; break;
-  }
-  
   console.log(cirkle.classList, cirkle.clientX, cirkle.clientY);
 }
 
