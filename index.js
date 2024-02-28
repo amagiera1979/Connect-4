@@ -89,8 +89,14 @@ arDrop.forEach((ar, index) => {
     const data = e.dataTransfer.getData('text/plain');
     e.dataTransfer.dropEffect = 'move';
     const addDiv = document.getElementById(data);
-// addDiv.style.rubyPosition= 'under'
+  
     e.target.appendChild(addDiv);
+    // addDiv.style.clientX= '20px'
+   if(index===1){ 
+    addDiv.style.left ='280px'
+      }else if(index===2){
+    addDiv.style.left ='334px';
+  }
     console.log(e.clientY, e.clientX);
     // Wywołanie f. spadania pionka
     fallCirkle(addDiv, ar, index);

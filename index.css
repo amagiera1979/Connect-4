@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
+@media screen and(min-width: 300px){
+  body {
+    width: 75%;
+}}
 * {
   margin-left: auto;
   margin-right: auto;
@@ -80,6 +85,15 @@ h3 {
     height: 40px;
    border: 1px dashed black;
 }
+
+/* .ar-drop{
+  border: 1px dotted black;
+  width: 20px;
+  height: 20px;
+display:inline-flex;
+justify-self: flex-start;
+/* justify-self:flex-start;
+} */ 
 .arrow {
   width: 0;
   height: 0;
@@ -88,6 +102,7 @@ h3 {
   border-top: 20px solid white;
   margin-top: 60px;
     visibility: hidden;
+    /* display:block; */
 }
 
 .board {
@@ -97,9 +112,10 @@ h3 {
   background-color: antiquewhite;
   border-radius: 10px;
   display: grid;
+  
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(6, 1fr);
-  gap: 5px;
+  gap: 0px;
   -webkit-box-shadow: 2px -9px 8px -1px rgba(66, 68, 90, 1);
   -moz-box-shadow: 2px -9px 8px -1px rgba(66, 68, 90, 1);
   box-shadow: 2px -9px 8px -1px rgba(66, 68, 90, 1);
