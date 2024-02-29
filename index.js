@@ -64,8 +64,25 @@ function createCirkleRed() {
 }
 // Dodanie animacji spadania pionka
 function fallCirkle(cirkle, ar, index) {
-  // cirkle.classList.add('animation');
-  
+ 
+ if(index===1){
+  cirkle.style.transform = 'translateX(-5px)'
+ } 
+ if(index===2){
+  cirkle.style.transform = 'translateX(-5px)'
+ }
+ if(index===3){
+  cirkle.style.transform = 'translateX(-5px)'
+ }
+ if(index===4){
+  cirkle.style.transform = 'translateX(-5px)'
+ }
+ if(index===5){
+  cirkle.style.transform = 'translateX(-5px)'
+ }
+ if(index===6){
+  cirkle.style.transform = 'translateX(-5px)'
+ }
   // switch(index){
   //   case 0: cirkle.style.translate = '-2px'; break;
   //   case 1: cirkle.clientX = '-20px'; break;
@@ -92,11 +109,11 @@ arDrop.forEach((ar, index) => {
   
     e.target.appendChild(addDiv);
     // addDiv.style.clientX= '20px'
-   if(index===1){ 
-    addDiv.style.left ='280px'
-      }else if(index===2){
-    addDiv.style.left ='334px';
-  }
+  //  if(index===1){ 
+  //   addDiv.style.left ='280px'
+  //     }else if(index===2){
+  //   addDiv.style.left ='334px';
+  // }
     console.log(e.clientY, e.clientX);
     // Wywołanie f. spadania pionka
     fallCirkle(addDiv, ar, index);
