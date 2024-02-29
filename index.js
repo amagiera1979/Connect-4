@@ -66,22 +66,22 @@ function createCirkleRed() {
 function fallCirkle(cirkle, ar, index) {
  
  if(index===1){
-  cirkle.style.transform = 'translateX(-5px)'
+  cirkle.style.transform = 'translateX(-3px)'
  } 
  if(index===2){
   cirkle.style.transform = 'translateX(-5px)'
  }
  if(index===3){
-  cirkle.style.transform = 'translateX(-5px)'
+  cirkle.style.transform = 'translateX(-9px)'
  }
  if(index===4){
-  cirkle.style.transform = 'translateX(-5px)'
+  cirkle.style.transform = 'translateX(-12px)'
  }
  if(index===5){
-  cirkle.style.transform = 'translateX(-5px)'
+  cirkle.style.transform = 'translateX(-20px)'
  }
  if(index===6){
-  cirkle.style.transform = 'translateX(-5px)'
+  cirkle.style.transform = 'translateX(-25px)'
  }
   // switch(index){
   //   case 0: cirkle.style.translate = '-2px'; break;

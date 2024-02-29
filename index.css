@@ -74,15 +74,16 @@ h3 {
   background-color: rgb(66, 64, 64);
   width: 60px;
   height: 10px;
-  margin: 0 13px;
+  margin: 0 11px;
   border-radius: 50%;
   
 }
 
 .ar {
-  margin: 0 16px;
+  margin-left: 15px;
+  margin-right: 16px;
   display:inline-flex;
-    height: 40px;
+    height: 50px;
    border: 1px dashed black;
 }
 
@@ -100,9 +101,10 @@ justify-self: flex-start;
     border-left: 20px solid transparent;
   border-right: 20px solid transparent;
   border-top: 20px solid white;
-  margin-top: 60px;
+  margin-top: 70px;
     visibility: hidden;
-    /* display:block; */
+    align-self:flex-end;
+    /* display:inline; */
 }
 
 .board {
@@ -115,7 +117,7 @@ justify-self: flex-start;
   
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(6, 1fr);
-  gap: 0px;
+  gap: 3px;
   -webkit-box-shadow: 2px -9px 8px -1px rgba(66, 68, 90, 1);
   -moz-box-shadow: 2px -9px 8px -1px rgba(66, 68, 90, 1);
   box-shadow: 2px -9px 8px -1px rgba(66, 68, 90, 1);
