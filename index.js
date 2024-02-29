@@ -7,6 +7,7 @@ const rowDrop = document.querySelectorAll('.row');
 const rows = document.querySelector('.rows');
 const arrow = document.querySelectorAll('.arrow');
 let arDrop = document.querySelectorAll('.ar');
+const boardCirkle = document.querySelectorAll('board-cirkle');
 
 // function onDragCirkle(e) {
 //   console.log(e.pageX, e.pageY, 'dragging');
@@ -65,29 +66,25 @@ function createCirkleRed() {
 // Dodanie animacji spadania pionka
 function fallCirkle(cirkle, ar, index) {
  
- if(index===1){
-  cirkle.style.transform = 'translateX(-3px)'
- } 
- if(index===2){
-  cirkle.style.transform = 'translateX(-5px)'
- }
- if(index===3){
-  cirkle.style.transform = 'translateX(-9px)'
- }
- if(index===4){
-  cirkle.style.transform = 'translateX(-12px)'
- }
- if(index===5){
-  cirkle.style.transform = 'translateX(-20px)'
- }
- if(index===6){
-  cirkle.style.transform = 'translateX(-25px)'
- }
-  // switch(index){
-  //   case 0: cirkle.style.translate = '-2px'; break;
-  //   case 1: cirkle.clientX = '-20px'; break;
-  //   case 6: cirkle.style.transform = 'translateX(-15px)'; break;
-  // }
+  // if(index===1){
+  //   cirkle.style.transform = 'translateX(-3px)'
+  //  } 
+  //  if(index===2){
+  //   cirkle.style.transform = 'translateX(-5px)'
+  //  }
+  //  if(index===3){
+  //   cirkle.style.transform = 'translateX(-9px)'
+  //  }
+  //  if(index===4){
+  //   cirkle.style.transform = 'translateX(-12px)'
+  //  }
+  //  if(index===5){
+  //   cirkle.style.transform = 'translateX(-20px)'
+  //  }
+  //  if(index===6){
+  //   cirkle.style.transform = 'translateX(-25px)'
+  //  }
+ 
   cirkle.classList.add('animation');
   console.log(cirkle.classList, cirkle.clientX, cirkle.clientY);
 }

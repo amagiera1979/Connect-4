@@ -55,7 +55,7 @@ h3 {
 .road {
   width: 140px;
   height: 60px;
-  border: 1px dotted black;
+  /* border: 1px dotted black; */
   margin-bottom: 50px;
   margin-top: -20px;
 }
@@ -80,14 +80,14 @@ h3 {
 }
 
 .ar {
-  margin-left: 15px;
+  margin-left: 16px;
   margin-right: 16px;
   display:inline-flex;
     height: 50px;
-   border: 1px dashed black;
+   /* border: 1px dashed black; */
 }
 
-/* .ar-drop{
+/* .ar-drop{red-disc
   border: 1px dotted black;
   width: 20px;
   height: 20px;
@@ -189,6 +189,7 @@ justify-self: flex-start;
 .animation {
   animation-name: fall;
   animation-duration: 5s;
+  
   
   /* position: absolute; */
   /* margin-right:10px; */
