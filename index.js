@@ -9,7 +9,6 @@ const arrow = document.querySelectorAll('.arrow');
 let arDrop = document.querySelectorAll('.ar');
 const boardCirkle = document.querySelectorAll('board-cirkle');
 
-
 function showDropArrow(index) {
   arrow.forEach((a, item) => {
     // console.log(index, item);
@@ -17,6 +16,23 @@ function showDropArrow(index) {
       ? (a.style.visibility = 'visible')
       : (a.style.visibility = 'hidden');
   });
+}
+
+function fillBoardByCirkle(cirkle, arIndex) {
+  boardCirkle.forEach((bc, index) => {
+    if (bc.id === 8) {
+      
+      cirkle.classList.remove('animation');
+      bc.appendChild(cirkle);
+      console.log(arIndex, cirkle.className);
+    }
+  });
+  // if (arIndex === 0) {
+  //   boardCirkle[7].appendChild(cirkle);
+
+  //   cirkle.classList.remove('animation');
+  // }
+  
 }
 
 // Pionek żółty z animacją przeciągania i upuszczania
@@ -64,9 +80,10 @@ function createCirkleRed() {
 // Dodanie animacji spadania pionka
 function fallCirkle(cirkle, index) {
   cirkle.classList.add('animation');
+  console.log(index, cirkle);
   // if(index===1){
   //   cirkle.style.transform = 'translateX(-3px)'
-  //  } 
+  //  }
   //  if(index===2){
   //   cirkle.style.transform = 'translateX(-5px)'
   //  }
@@ -82,6 +99,7 @@ function fallCirkle(cirkle, index) {
   //  if(index===6){
   //   cirkle.style.transform = 'translateX(-25px)'
   //  }
+  fillBoardByCirkle(cirkle, index);
 }
 
 // Wyświetlanie strzałek oraz przeciąganie i upuszczanie pionka
@@ -98,11 +116,11 @@ arDrop.forEach((ar, index) => {
     const data = e.dataTransfer.getData('text/plain');
     e.dataTransfer.dropEffect = 'move';
     const addDiv = document.getElementById(data);
-  
+
     e.target.appendChild(addDiv);
-     
+
     // Wywołanie f. spadania pionka
-    fallCirkle(addDiv, ar, index);
+    fallCirkle(addDiv, index);
   };
 });
 
