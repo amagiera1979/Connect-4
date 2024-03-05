@@ -9,9 +9,7 @@ const arrow = document.querySelectorAll('.arrow');
 let arDrop = document.querySelectorAll('.ar');
 const boardCirkle = document.querySelectorAll('board-cirkle');
 
-// function onDragCirkle(e) {
-//   console.log(e.pageX, e.pageY, 'dragging');
-// }
+
 function showDropArrow(index) {
   arrow.forEach((a, item) => {
     // console.log(index, item);
@@ -56,7 +54,7 @@ function createCirkleRed() {
     e.dataTransfer.effectAllowed = 'move';
     e.dataTransfer.dropEffect = 'move';
     e.dataTransfer.setData('text/plain', e.target.className);
-    console.log(e.target.classList);
+    // console.log(e.target.classList);
   });
 
   cirkleRed.addEventListener('dragend', e => {
@@ -64,8 +62,8 @@ function createCirkleRed() {
   });
 }
 // Dodanie animacji spadania pionka
-function fallCirkle(cirkle, ar, index) {
- 
+function fallCirkle(cirkle, index) {
+  cirkle.classList.add('animation');
   // if(index===1){
   //   cirkle.style.transform = 'translateX(-3px)'
   //  } 
@@ -84,9 +82,6 @@ function fallCirkle(cirkle, ar, index) {
   //  if(index===6){
   //   cirkle.style.transform = 'translateX(-25px)'
   //  }
- 
-  cirkle.classList.add('animation');
-  console.log(cirkle.classList, cirkle.clientX, cirkle.clientY);
 }
 
 // Wyświetlanie strzałek oraz przeciąganie i upuszczanie pionka
@@ -105,13 +100,7 @@ arDrop.forEach((ar, index) => {
     const addDiv = document.getElementById(data);
   
     e.target.appendChild(addDiv);
-    // addDiv.style.clientX= '20px'
-  //  if(index===1){ 
-  //   addDiv.style.left ='280px'
-  //     }else if(index===2){
-  //   addDiv.style.left ='334px';
-  // }
-    console.log(e.clientY, e.clientX);
+     
     // Wywołanie f. spadania pionka
     fallCirkle(addDiv, ar, index);
   };
@@ -122,8 +111,4 @@ function showPlayer() {
   createCirkleRed();
 }
 
-// document.addEventListener('click', e => {
-//   // console.log(e.pageX, e.pageY);
-//   // console.log(e.clientX, e.clientY)
-// });
 window.addEventListener('load', showPlayer);
