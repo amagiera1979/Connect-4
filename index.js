@@ -84,7 +84,7 @@ function createCirkleRed() {
 // Dodanie animacji spadania pionka
 function fallCirkle(cirkle, index) {
   cirkle.classList.add('animation');
-  console.log(index, cirkle);
+  // console.log(index, cirkle);
   // if(index===1){
   //   cirkle.style.transform = 'translateX(-3px)'
   //  }
@@ -138,8 +138,9 @@ boardCirkle.forEach((bc, index)=>{
     bc.appendChild(red)
     console.log(index)
     red.className.remove('animation')
-    // bc.innerHTML = red;
+    bc.innerHTML = red;
   }
+  console.log(bc[0].innerHTML)
 })
 
 function showPlayer() {
