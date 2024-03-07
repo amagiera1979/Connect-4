@@ -174,7 +174,7 @@ justify-self: flex-start;
 
 @keyframes fall {
   0% {
-    transform: translateY(100px);
+    transform: translateY(90px);
     /* transform: translateX(-20px); */
     /* margin-right:5px; */
     
