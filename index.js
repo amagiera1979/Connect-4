@@ -8,6 +8,7 @@ const rows = document.querySelector('.rows');
 const arrow = document.querySelectorAll('.arrow');
 let arDrop = document.querySelectorAll('.ar');
 const boardCirkle = document.querySelectorAll('board-cirkle');
+// const boardCirkle = [...document.querySelectorAll('board-cirkle')];
 
 function showDropArrow(index) {
   arrow.forEach((a, item) => {
@@ -36,7 +37,7 @@ function showDropArrow(index) {
 
 //     // cirkle.classList.remove('animation');
 //   }
-  
+
 // }
 
 // Pionek żółty z animacją przeciągania i upuszczania
@@ -83,28 +84,24 @@ function createCirkleRed() {
 }
 // Dodanie animacji spadania pionka
 function fallCirkle(cirkle, index) {
-  cirkle.classList.add('animation');
-  // console.log(index, cirkle);
-  // if(index===1){
-  //   cirkle.style.transform = 'translateX(-3px)'
-  //  }
-  //  if(index===2){
-  //   cirkle.style.transform = 'translateX(-5px)'
-  //  }
-  //  if(index===3){
-  //   cirkle.style.transform = 'translateX(-9px)'
-  //  }
-  //  if(index===4){
-  //   cirkle.style.transform = 'translateX(-12px)'
-  //  }
-  //  if(index===5){
-  //   cirkle.style.transform = 'translateX(-20px)'
-  //  }
-  //  if(index===6){
-  //   cirkle.style.transform = 'translateX(-25px)'
-  //  }
+  // cirkle.classList.add('animation');
+  const animation = cirkle.animate(
+    [{ transform: `translateY(0)` }, { transform: `translateY(470px)` }],
+    { duration: 5000, ease: 'linear' }
+  );
+  // animation.pause();
+  console.log(index, cirkle);
  
-
+  for(let bc of boardCirkle){
+    console.log(bc.id)
+  }
+  // console.log(bc.id)
+ 
+  if(index===0&& boardCirkle[35]===''){
+    console.log(boardCirkle[35].id)
+    cirkle.onanimationend=(ev)=>{boardCirkle[35].appendChild(cirkle)}
+// animation.finish=()=>{boardCirkle[35].appendChild(cirkle);}
+  }
 }
 
 // Wyświetlanie strzałek oraz przeciąganie i upuszczanie pionka
@@ -127,21 +124,19 @@ arDrop.forEach((ar, index) => {
     // Wywołanie f. spadania pionka
     fallCirkle(addDiv, index);
     //  fillBoardByCirkle(addDiv, index);
-   
-    };
-
+  };
 });
 
-boardCirkle.forEach((bc, index)=>{
-  const red = document.getElementById('red-disc')
-  if(index===35&&bc.innerHTML===''){
-    bc.appendChild(red)
-    console.log(index)
-    red.className.remove('animation')
+boardCirkle.forEach((bc, index) => {
+  const red = document.getElementById('red-disc');
+  if (index === 35 && bc.innerHTML === '') {
+    bc.appendChild(red);
+    console.log(index);
+    red.className.remove('animation');
     bc.innerHTML = red;
   }
-  console.log(bc[0].innerHTML)
-})
+  console.log(bc[0].innerHTML);
+});
 
 function showPlayer() {
   // createCirkleYellow();
