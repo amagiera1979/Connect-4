@@ -7,7 +7,7 @@ const rowDrop = document.querySelectorAll('.row');
 const rows = document.querySelector('.rows');
 const arrow = document.querySelectorAll('.arrow');
 let arDrop = document.querySelectorAll('.ar');
-const boardCirkle = document.querySelectorAll('board-cirkle');
+const boardCirkle = document.querySelectorAll('.board-cirkle');
 // const boardCirkle = [...document.querySelectorAll('board-cirkle')];
 
 function showDropArrow(index) {
@@ -92,14 +92,14 @@ function fallCirkle(cirkle, index) {
   // animation.pause();
   console.log(index, cirkle);
  
-  for(let bc of boardCirkle){
-    console.log(bc.id)
-  }
+  // for(let bc of boardCirkle){
+    console.log(boardCirkle.id)
+  // }
   // console.log(bc.id)
  
   if(index===0&& boardCirkle[35]===''){
     console.log(boardCirkle[35].id)
-    cirkle.onanimationend=(ev)=>{boardCirkle[35].appendChild(cirkle)}
+    cirkle.onanimationend=(ev)=>{boardCirkle[35].innerHTML=cirkle}
 // animation.finish=()=>{boardCirkle[35].appendChild(cirkle);}
   }
 }
@@ -127,16 +127,16 @@ arDrop.forEach((ar, index) => {
   };
 });
 
-boardCirkle.forEach((bc, index) => {
-  const red = document.getElementById('red-disc');
-  if (index === 35 && bc.innerHTML === '') {
-    bc.appendChild(red);
-    console.log(index);
-    red.className.remove('animation');
-    bc.innerHTML = red;
-  }
-  console.log(bc[0].innerHTML);
-});
+// boardCirkle.forEach((bc, index) => {
+//   const red = document.getElementById('red-disc');
+//   if (index === 35 && bc.innerHTML === '') {
+//     bc.appendChild(red);
+//     console.log(index);
+//     red.className.remove('animation');
+//     bc.innerHTML = red;
+//   }
+//   // console.log(bc[0].innerHTML);
+// });
 
 function showPlayer() {
   // createCirkleYellow();
