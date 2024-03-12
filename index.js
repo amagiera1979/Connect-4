@@ -70,6 +70,13 @@ function fallCirkle(cirkle, index) {
   );
   // animation.pause();
   console.log(index, cirkle);
+  animation.onstart= checkColumn(index);
+  
+}
+
+function checkColumn(arIndex){
+  console.log(arIndex);
+  
 }
 
 // Wyświetlanie strzałek oraz przeciąganie i upuszczanie pionka
