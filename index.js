@@ -19,27 +19,6 @@ function showDropArrow(index) {
   });
 }
 
-// function fillBoardByCirkle(cirkle, arIndex) {
-//   // let fieldTable = [];
-//   // boardCirkle.forEach((bc, index) => {
-//   //  fieldTable.push(bc[0]);
-//   // //  console.log(fieldTable)
-//   // });
-//   // console.log(fieldTable)
-//   // cirkle.classList.remove('animation');
-//   if (arIndex === 0) {
-//     if(boardCirkle.id ===36 && boardCirkle.innerHTML===''){
-//       console.log(boardCirkle.id)
-//       boardCirkle.appendChild(cirkle)
-//       cirkle.classList.remove('animation');
-//     }
-//     // boardCirkle.appendChild(cirkle);
-
-//     // cirkle.classList.remove('animation');
-//   }
-
-// }
-
 // Pionek żółty z animacją przeciągania i upuszczania
 function createCirkleYellow() {
   const cirkleYellow = document.createElement('div');
@@ -91,17 +70,6 @@ function fallCirkle(cirkle, index) {
   );
   // animation.pause();
   console.log(index, cirkle);
- 
-  // for(let bc of boardCirkle){
-    console.log(boardCirkle.id)
-  // }
-  // console.log(bc.id)
- 
-  if(index===0&& boardCirkle[35]===''){
-    console.log(boardCirkle[35].id)
-    cirkle.onanimationend=(ev)=>{boardCirkle[35].innerHTML=cirkle}
-// animation.finish=()=>{boardCirkle[35].appendChild(cirkle);}
-  }
 }
 
 // Wyświetlanie strzałek oraz przeciąganie i upuszczanie pionka
@@ -123,20 +91,8 @@ arDrop.forEach((ar, index) => {
 
     // Wywołanie f. spadania pionka
     fallCirkle(addDiv, index);
-    //  fillBoardByCirkle(addDiv, index);
   };
 });
-
-// boardCirkle.forEach((bc, index) => {
-//   const red = document.getElementById('red-disc');
-//   if (index === 35 && bc.innerHTML === '') {
-//     bc.appendChild(red);
-//     console.log(index);
-//     red.className.remove('animation');
-//     bc.innerHTML = red;
-//   }
-//   // console.log(bc[0].innerHTML);
-// });
 
 function showPlayer() {
   // createCirkleYellow();
