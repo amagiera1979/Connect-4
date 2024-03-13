@@ -70,13 +70,51 @@ function fallCirkle(cirkle, index) {
   );
   // animation.pause();
   console.log(index, cirkle);
-  animation.onstart= checkColumn(index);
-  
+  animation.onstart = checkColumn(index);
 }
 
-function checkColumn(arIndex){
+const results = {
+  columns: {
+    col1: [0, 7, 14, 21, 28, 35],
+    col2: [1, 8, 15, 22, 29, 36],
+    col3: [2, 9, 16, 23, 30, 37],
+    col4: [3, 10, 17, 24, 31, 38],
+    col5: [4, 11, 18, 25, 32, 39],
+    col6: [5, 12, 19, 26, 33, 40],
+    col7: [6, 13, 20, 27, 34, 41],
+  },
+  rows: {
+    row1: [0, 1, 2, 3, 4, 5, 6],
+    row2: [7, 8, 9, 10, 11, 12, 13],
+    row3: [14, 15, 16, 17, 18, 19, 20],
+    row4: [21, 22, 23, 24, 25, 26, 27],
+    row5: [28, 29, 30, 31, 32, 33, 34],
+    row6: [35, 36, 37, 38, 39, 40, 41],
+  },
+  rightSkewed: {
+    rs1: [14, 22, 30, 38],
+    rs2: [7, 15, 23, 31, 39],
+    rs3: [0, 8, 16, 24, 32, 40],
+    rs4: [1, 9, 17, 25, 33, 41],
+    rs5: [2, 10, 18, 26, 34],
+    rs6: [3, 11, 19, 27],
+  },
+  leftSkewed: {
+    ls1: [3, 9, 15, 21],
+    ls2: [4, 10, 16, 22, 28],
+    ls3: [5, 11, 17, 23, 29, 35],
+    ls4: [6, 12, 18, 24, 30, 36],
+    ls5: [13, 19, 25, 31, 37],
+    ls6: [20, 26, 32, 38],
+  },
+};
+
+function checkColumn(arIndex) {
+  switch (arIndex) {
+    case 0:
+      console.log(colRow.col1);
+  }
   console.log(arIndex);
-  
 }
 
 // Wyświetlanie strzałek oraz przeciąganie i upuszczanie pionka
