@@ -120,10 +120,13 @@ function fallCirkle(cirkle, index) {
 function changePlayer(col, cirkle) {
   if(cirkle.id === 'red-disc'){
     moveP1+=1;
+    movePlayer1.innerHTML = `Move: ${moveP1}`;
+  
     player1.style.backgroundColor = 'antiquewhite'
     createCirkleYellow();
   }else{
     moveP2++;
+    movePlayer2.innerHTML = `Move: ${moveP2}`;
     player2.style.backgroundColor = 'antiquewhite';
     createCirkleRed();
   }
