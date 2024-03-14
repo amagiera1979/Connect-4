@@ -152,7 +152,7 @@ justify-self: flex-start;
   border: 10px solid rgb(212, 183, 14);
   border-radius: 50%;
   position: absolute;
-  display: inline;
+  /* display: inline; */
 
   cursor: pointer;
 }
