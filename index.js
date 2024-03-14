@@ -47,9 +47,12 @@ const results = {
   },
 };
 
+function checkWinner(){
+  
+}
+
 function showDropArrow(index) {
   arrow.forEach((a, item) => {
-    // console.log(index, item);
     index === item
       ? (a.style.visibility = 'visible')
       : (a.style.visibility = 'hidden');
@@ -93,7 +96,6 @@ function createCirkleRed() {
     e.dataTransfer.effectAllowed = 'move';
     e.dataTransfer.dropEffect = 'move';
     e.dataTransfer.setData('text/plain', e.target.className);
-    // console.log(e.target.classList);
   });
 
   cirkleRed.addEventListener('dragend', e => {
@@ -108,30 +110,37 @@ function fallCirkle(cirkle, index) {
     [{ transform: `translateY(0)` }, { transform: `translateY(470px)` }],
     { duration: 5000, ease: 'linear' }
   );
-  // animation.pause();
-  console.log(index, cirkle);
-  animation.onstart = checkColumn(index);
-  // console.log(col);
 
+  // Sprawdznie wartości pól kolumny przy starcie anim.
+  animation.onstart = checkColumn(index);
+  // Wypełnianie tablicy przy wykonywaniu animacji
   animation.oniteration = fillBoard(col, cirkle, animation);
+  // Zmiana gracza przy anulowaniu animacji
   animation.oncancel = changePlayer(col, cirkle);
 }
 
+// Zmiana gracza, zliczanie ruchów, czyszczenie tab.col i strzałek
 function changePlayer(col, cirkle) {
-  if(cirkle.id === 'red-disc'){
+  if (cirkle.id === 'red-disc') {
     moveP1++;
     movePlayer1.innerHTML = `Move: ${moveP1}`;
-  
-    player1.style.backgroundColor = 'antiquewhite'
+    player1.style.backgroundColor = 'antiquewhite';
     createCirkleYellow();
-  }else{
+  } else {
     moveP2++;
     movePlayer2.innerHTML = `Move: ${moveP2}`;
     player2.style.backgroundColor = 'antiquewhite';
     createCirkleRed();
   }
+  col = [];
+  arrow.forEach(a => {
+    a.style.visibility = 'hidden';
+
+    checkWinner()
+  });
 }
 
+// Wypełnianie tablicy w odpowiedniej koljności
 function fillBoard(col, cirkle, animation) {
   boardCirkle.forEach((bc, index) => {
     col.map(c => {
@@ -139,13 +148,12 @@ function fillBoard(col, cirkle, animation) {
         bc.appendChild(cirkle);
         animation.cancel();
         cirkle.draggable = false;
-
-        // console.log(index)
       }
     });
   });
 }
 
+// Sprawdzanie kolumny wrzutu i odwrócenie kolejności
 function checkColumn(arIndex) {
   switch (arIndex) {
     case 0:
