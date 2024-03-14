@@ -11,6 +11,8 @@ const boardCirkle = document.querySelectorAll('.board-cirkle');
 let col = [];
 let moveP1 = 0;
 let moveP2 = 0;
+let yellowScore = [];
+let redScore = [];
 const results = {
   columns: {
     col1: [0, 7, 14, 21, 28, 35],
@@ -47,8 +49,14 @@ const results = {
   },
 };
 
-function checkWinner(){
-  
+function checkWinner() {
+  boardCirkle.forEach((bc,index)=>{
+    if(bc!=='' && bc.className==='red-cirkle'){
+      redScore.push(index)
+    }
+   
+  })
+  console.log(yellowScore, redScore)
 }
 
 function showDropArrow(index) {
@@ -117,17 +125,20 @@ function fallCirkle(cirkle, index) {
   animation.oniteration = fillBoard(col, cirkle, animation);
   // Zmiana gracza przy anulowaniu animacji
   animation.oncancel = changePlayer(col, cirkle);
+  console.log(index)
 }
 
 // Zmiana gracza, zliczanie ruchów, czyszczenie tab.col i strzałek
 function changePlayer(col, cirkle) {
   if (cirkle.id === 'red-disc') {
     moveP1++;
+    // redScore.push(index);
     movePlayer1.innerHTML = `Move: ${moveP1}`;
     player1.style.backgroundColor = 'antiquewhite';
     createCirkleYellow();
   } else {
     moveP2++;
+    // yellowScore.push(index);
     movePlayer2.innerHTML = `Move: ${moveP2}`;
     player2.style.backgroundColor = 'antiquewhite';
     createCirkleRed();
@@ -135,16 +146,19 @@ function changePlayer(col, cirkle) {
   col = [];
   arrow.forEach(a => {
     a.style.visibility = 'hidden';
-
-    checkWinner()
   });
+  // console.log(col.value)
+  checkWinner();
 }
 
 // Wypełnianie tablicy w odpowiedniej koljności
 function fillBoard(col, cirkle, animation) {
   boardCirkle.forEach((bc, index) => {
+    let a;
     col.map(c => {
       if (bc.innerHTML === '' && index === c) {
+        a= c;
+        // console.log(a)
         bc.appendChild(cirkle);
         animation.cancel();
         cirkle.draggable = false;
