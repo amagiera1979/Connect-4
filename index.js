@@ -9,6 +9,8 @@ const arrow = document.querySelectorAll('.arrow');
 let arDrop = document.querySelectorAll('.ar');
 const boardCirkle = document.querySelectorAll('.board-cirkle');
 let col = [];
+const moveP1 = 0;
+const moveP2 = 0;
 const results = {
   columns: {
     col1: [0, 7, 14, 21, 28, 35],
@@ -61,6 +63,7 @@ function createCirkleYellow() {
   cirkleYellow.id = 'yellow-disc';
   cirkleYellow.draggable = 'true';
   player2.style.backgroundColor = 'bisque';
+ 
   road.appendChild(cirkleYellow);
 
   cirkleYellow.addEventListener('dragstart', e => {
@@ -82,6 +85,7 @@ function createCirkleRed() {
   cirkleRed.id = 'red-disc';
   cirkleRed.draggable = 'true';
   player1.style.backgroundColor = 'bisque';
+ 
   road.appendChild(cirkleRed);
 
   cirkleRed.addEventListener('dragstart', e => {
@@ -109,9 +113,12 @@ function fallCirkle(cirkle, index) {
   animation.onstart = checkColumn(index);
   // console.log(col);
 
-  // uzupełnić puste funkcje
   animation.oniteration = fillBoard(col, cirkle, animation);
-  // animation.oncancel = changePlayer;
+  animation.oncancel = changePlayer(col, cirkle);
+}
+
+function changePlayer(col, cirkle){
+
 }
 
 function fillBoard(col, cirkle, animation) {
@@ -121,6 +128,7 @@ function fillBoard(col, cirkle, animation) {
         bc.appendChild(cirkle);
         animation.cancel();
         cirkle.draggable = false;
+
         // console.log(index)
       }
     });
@@ -182,6 +190,9 @@ arDrop.forEach((ar, index) => {
 function showPlayer() {
   // createCirkleYellow();
   createCirkleRed();
+  movePlayer1.innerHTML =`Move: ${moveP1}`;
+  movePlayer2.innerHTML =`Move: ${moveP2}`;
+  
 }
 
 window.addEventListener('load', showPlayer);
