@@ -107,23 +107,27 @@ function fallCirkle(cirkle, index) {
   // animation.pause();
   console.log(index, cirkle);
   animation.onstart = checkColumn(index);
-  console.log(col);
+  // console.log(col);
 
   // uzupełnić puste funkcje
-  animation.oniteration = fillBoard(col);
+  animation.oniteration = fillBoard(col, cirkle, animation);
   // animation.oncancel = changePlayer;
 }
 
-function fillBoard(col) {
-  boardCirkle.forEach((bc, index)=>{
-if(bc.innerHTML==='' && index===col){
-  console.log(index)
-}
-  })
+function fillBoard(col, cirkle, animation) {
+  boardCirkle.forEach((bc, index) => {
+    col.map(c => {
+      if (bc.innerHTML === '' && index === c) {
+        bc.appendChild(cirkle);
+        animation.cancel();
+        cirkle.draggable = false;
+        // console.log(index)
+      }
+    });
+  });
 }
 
 function checkColumn(arIndex) {
- 
   switch (arIndex) {
     case 0:
       col = results.columns.col1;
