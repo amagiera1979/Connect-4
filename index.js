@@ -199,25 +199,25 @@ function fillBoard(col, cirkle, animation) {
 function checkColumn(arIndex) {
   switch (arIndex) {
     case 0:
-      col = results.columns.col1;
+      col = results.col1;
       break;
     case 1:
-      col = results.columns.col2;
+      col = results.col2;
       break;
     case 2:
-      col = results.columns.col3;
+      col = results.col3;
       break;
     case 3:
-      col = results.columns.col4;
+      col = results.col4;
       break;
     case 4:
-      col = results.columns.col5;
+      col = results.col5;
       break;
     case 5:
-      col = results.columns.col6;
+      col = results.col6;
       break;
     case 6:
-      col = results.columns.col7;
+      col = results.col7;
       break;
     default:
       break;
