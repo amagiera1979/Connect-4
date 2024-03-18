@@ -14,43 +14,62 @@ let moveP2 = 0;
 let yellowScore = [];
 let redScore = [];
 const results = {
-  columns: {
-    col1: [0, 7, 14, 21, 28, 35],
-    col2: [1, 8, 15, 22, 29, 36],
-    col3: [2, 9, 16, 23, 30, 37],
-    col4: [3, 10, 17, 24, 31, 38],
-    col5: [4, 11, 18, 25, 32, 39],
-    col6: [5, 12, 19, 26, 33, 40],
-    col7: [6, 13, 20, 27, 34, 41],
-  },
-  rows: {
-    row1: [0, 1, 2, 3, 4, 5, 6],
-    row2: [7, 8, 9, 10, 11, 12, 13],
-    row3: [14, 15, 16, 17, 18, 19, 20],
-    row4: [21, 22, 23, 24, 25, 26, 27],
-    row5: [28, 29, 30, 31, 32, 33, 34],
-    row6: [35, 36, 37, 38, 39, 40, 41],
-  },
-  rightSkewed: {
-    rs1: [14, 22, 30, 38],
-    rs2: [7, 15, 23, 31, 39],
-    rs3: [0, 8, 16, 24, 32, 40],
-    rs4: [1, 9, 17, 25, 33, 41],
-    rs5: [2, 10, 18, 26, 34],
-    rs6: [3, 11, 19, 27],
-  },
-  leftSkewed: {
-    ls1: [3, 9, 15, 21],
-    ls2: [4, 10, 16, 22, 28],
-    ls3: [5, 11, 17, 23, 29, 35],
-    ls4: [6, 12, 18, 24, 30, 36],
-    ls5: [13, 19, 25, 31, 37],
-    ls6: [20, 26, 32, 38],
-  },
+  col1: [0, 7, 14, 21, 28, 35],
+  col2: [1, 8, 15, 22, 29, 36],
+  col3: [2, 9, 16, 23, 30, 37],
+  col4: [3, 10, 17, 24, 31, 38],
+  col5: [4, 11, 18, 25, 32, 39],
+  col6: [5, 12, 19, 26, 33, 40],
+  col7: [6, 13, 20, 27, 34, 41],
+
+  row1: [0, 1, 2, 3, 4, 5, 6],
+  row2: [7, 8, 9, 10, 11, 12, 13],
+  row3: [14, 15, 16, 17, 18, 19, 20],
+  row4: [21, 22, 23, 24, 25, 26, 27],
+  row5: [28, 29, 30, 31, 32, 33, 34],
+  row6: [35, 36, 37, 38, 39, 40, 41],
+
+  rs1: [14, 22, 30, 38],
+  rs2: [7, 15, 23, 31, 39],
+  rs3: [0, 8, 16, 24, 32, 40],
+  rs4: [1, 9, 17, 25, 33, 41],
+  rs5: [2, 10, 18, 26, 34],
+  rs6: [3, 11, 19, 27],
+
+  ls1: [3, 9, 15, 21],
+  ls2: [4, 10, 16, 22, 28],
+  ls3: [5, 11, 17, 23, 29, 35],
+  ls4: [6, 12, 18, 24, 30, 36],
+  ls5: [13, 19, 25, 31, 37],
+  ls6: [20, 26, 32, 38],
 };
 
-function checkWinner() {
-  boardCirkle.forEach((bc, index) => {});
+function checkWinner(x) {
+  if (x === 'red') {
+    redScore.sort(function (a, b) {
+      return a - b;
+    });
+    console.log(redScore, 'p1');
+    // results.columns.col1.map(res=>{
+    //   redScore.forEach(rs=>{
+    //     rs===res?console.log(res):console.log('nic');
+    //   })
+    // })
+   
+    for (let res in results) {
+      console.log(res);
+      // let res = res;
+      res.forEach(a => {
+        a.map(a=>{
+          redScore.forEach(rs => {
+            a === rs ? console.log('win red') : console.log('win yellow');
+          });
+        })
+        
+      });
+    }
+  } else if (x === 'yellow') console.log(yellowScore, 'p2');
+  // yellowScore.reverse();
   // console.log(yellowScore, redScore);
 }
 
@@ -120,7 +139,7 @@ function fallCirkle(cirkle, index) {
   animation.oniteration = fillBoard(col, cirkle, animation);
   // Zmiana gracza przy anulowaniu animacji
   animation.oncancel = changePlayer(col, cirkle);
-  console.log(index);
+  // console.log(index);
 }
 
 // Zmiana gracza, zliczanie ruchów, czyszczenie tab.col i strzałek
@@ -143,8 +162,6 @@ function changePlayer(col, cirkle) {
   arrow.forEach(a => {
     a.style.visibility = 'hidden';
   });
-
-  checkWinner();
 }
 
 // Wypełnianie tablicy w odpowiedniej koljności
@@ -166,7 +183,16 @@ function fillBoard(col, cirkle, animation) {
   // Dodawanie wyniku do odpowiedniej tablicy wyników
   let c = b.pop();
   a.className === 'red-disc' ? redScore.push(c) : yellowScore.push(c);
+  let x;
+
   // console.log(redScore, yellowScore, b);
+  if (redScore.length >= 4 && a.className === 'red-disc') {
+    x = 'red';
+    checkWinner(x);
+  } else if (yellowScore.length >= 4 && a.className === 'yellow-disc') {
+    x = 'yellow';
+    checkWinner(x);
+  }
 }
 
 // Sprawdzanie kolumny wrzutu i odwrócenie kolejności
