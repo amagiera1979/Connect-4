@@ -143,42 +143,30 @@ function changePlayer(col, cirkle) {
   arrow.forEach(a => {
     a.style.visibility = 'hidden';
   });
- 
+
   checkWinner();
 }
 
 // Wypełnianie tablicy w odpowiedniej koljności
 function fillBoard(col, cirkle, animation) {
   var a;
+  var b = [];
   boardCirkle.forEach((bc, index) => {
-    
-    // col.map(c => {
-    //   if (bc.innerHTML === '' && index === c) {
-    //     // console.log(a)
-    //     a= bc.appendChild(cirkle);
-    //     (a.className==='cirkle-red' )?redScore.push(bc.id)
-    //     :yellowScore.push(bc[index]);
-        
-    //     animation.cancel();
-    //     cirkle.draggable = false;
-        
-    //   }
-      
-    // });
-    for(let c of col){
+    col.map(c => {
+      // Przypisanie pionka do odpowiedniego pola na planszy
       if (bc.innerHTML === '' && index === c) {
-        //     // console.log(a)
-      a= bc.appendChild(cirkle);
-      (a.className==='cirkle-red' )?redScore.push(c)
-      :yellowScore.push(c);
-      
-      animation.cancel();
-      cirkle.draggable = false;
-      break;
-    }
-    
-  }});
-  console.log(redScore, yellowScore);
+        a = bc.appendChild(cirkle);
+        b.push(c);
+        // Wyłączenie animacji, usunięcie możliwości przeciągania
+        animation.cancel();
+        cirkle.draggable = false;
+      }
+    });
+  });
+  // Dodawanie wyniku do odpowiedniej tablicy wyników
+  let c = b.pop();
+  a.className === 'red-disc' ? redScore.push(c) : yellowScore.push(c);
+  // console.log(redScore, yellowScore, b);
 }
 
 // Sprawdzanie kolumny wrzutu i odwrócenie kolejności
