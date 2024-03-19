@@ -50,25 +50,28 @@ function checkWinner(x) {
       return a - b;
     });
     console.log(redScore, 'p1');
-    // results.columns.col1.map(res=>{
-    //   redScore.forEach(rs=>{
-    //     rs===res?console.log(res):console.log('nic');
-    //   })
-    // })
+    
+// console.log(Object.values(results))
+//     Object.values(results).forEach(res=>{
+// redScore.forEach(rs=>{
+//   if(res===rs){
+//     console.log(res)
+//   }
+// })
+//     })
+
+for(let res in results){
+  // console.log(results[res])
+  results[res].forEach(r=>{
+    redScore.forEach(rs=>{
+      if(r===rs){
+            console.log(r)
+          }
+    })
+  })
+}
    
-    for (let res in results) {
-      console.log(res);
-      // let res = res;
-      res.forEach(a => {
-        a.map(a=>{
-          redScore.forEach(rs => {
-            a === rs ? console.log('win red') : console.log('win yellow');
-          });
-        })
-        
-      });
-    }
-  } else if (x === 'yellow') console.log(yellowScore, 'p2');
+   } else if (x === 'yellow') console.log(yellowScore, 'p2');
   // yellowScore.reverse();
   // console.log(yellowScore, redScore);
 }
