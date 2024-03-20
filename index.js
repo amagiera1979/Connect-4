@@ -45,14 +45,13 @@ const results = {
 };
 
 function checkWinner(x) {
+  let winner = '';
   if (x === 'red') {
     redScore.sort(function (a, b) {
       return a - b;
     });
-    console.log(redScore, 'p1');
 
     for (let res in results) {
-      // console.log(results[res])
       let y = [];
       results[res].forEach(r => {
         redScore.forEach(rs => {
@@ -60,17 +59,39 @@ function checkWinner(x) {
             // console.log(r)
             y.push(r);
             if (y.length === 4) {
-              console.log('winner');
+              road.innerHTML = 'Player 1 wins!';
+              road.style.color = 'red';
+              road.style.fontSize = '28px';
+              winner = 'red';
+              changePlayer(winner);
             }
           }
-          // console.log(y)
         });
-        console.log(y);
       });
     }
-  } else if (x === 'yellow') console.log(yellowScore, 'p2');
-  // yellowScore.reverse();
-  // console.log(yellowScore, redScore);
+  } else if (x === 'yellow') {
+    // yellowScore.sort(function (a, b) {
+    //   return a - b;
+    // });
+    for (let res in results) {
+      let y = [];
+      results[res].forEach(r => {
+        yellowScore.forEach(ys => {
+          if (r === ys) {
+            // console.log(r)
+            y.push(r);
+            if (y.length === 4) {
+              road.innerHTML = 'Player 2 wins!';
+              road.style.color = 'gold';
+              road.style.fontSize = '28px';
+              winner = 'yellow';
+              changePlayer(winner);
+            }
+          }
+        });
+      });
+    }
+  }
 }
 
 function showDropArrow(index) {
@@ -138,12 +159,21 @@ function fallCirkle(cirkle, index) {
   // Wypełnianie tablicy przy wykonywaniu animacji
   animation.oniteration = fillBoard(col, cirkle, animation);
   // Zmiana gracza przy anulowaniu animacji
-  animation.oncancel = changePlayer(col, cirkle);
+  animation.oncancel = changePlayer(col, cirkle, '');
   // console.log(index);
 }
 
 // Zmiana gracza, zliczanie ruchów, czyszczenie tab.col i strzałek
-function changePlayer(col, cirkle) {
+function changePlayer(col, cirkle, winner) {
+  // if (winner === 'red') {
+  // road.innerHTML = 'Player 1 wins!';
+  // road.style.color = 'red';
+  // road.style.fontSize = '28px';
+  // } else if (winner === 'yellow') {
+  //   road.innerHTML = 'Player 2 wins!';
+  //   road.style.color = 'darkyellow';
+  //   road.style.fontSize = '28px';
+  // }
   if (cirkle.id === 'red-disc') {
     moveP1++;
 
