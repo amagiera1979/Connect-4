@@ -55,7 +55,7 @@ function checkWinner(x) {
       let y = [];
       results[res].forEach(r => {
         redScore.forEach((rs, index) => {
-          let a = index;
+          let a = rs;
               let b = index + 1;
           if (r === rs && a === b - 1) {
             console.log(r, a, b)
