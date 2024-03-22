@@ -54,10 +54,13 @@ function checkWinner(x) {
     for (let res in results) {
       let y = [];
       results[res].forEach(r => {
-        redScore.forEach(rs => {
-          if (r === rs) {
-            // console.log(r)
+        redScore.forEach((rs, index) => {
+          let a = index;
+              let b = index + 1;
+          if (r === rs && a === b - 1) {
+            console.log(r, a, b)
             y.push(r);
+
             if (y.length === 4) {
               road.innerHTML = 'Player 1 wins!';
               road.style.color = 'red';
