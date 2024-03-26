@@ -50,74 +50,28 @@ function checkWinner(x) {
     redScore.sort(function (a, b) {
       return a - b;
     });
-
-    for (let res in results) {
-      let y = [];
-      results[res].forEach(r => {
-        redScore.forEach((rs, index) => {
-          let a = rs;
-          let b = redScore[index + 1];
-          let c = redScore[index + 2];
-          let d = redScore[index + 3];
-          if (r === rs && b === a + 1 && c === b + 1 && d === c + 1) {
-            console.log(r, a, b, c, d);
-            console.log('winner');
-            // y.push(r);
-
-            // if (y.length === 4) {
-            //   console.log('winner')
-            //   road.innerHTML = 'Player 1 wins!';
-            //   road.style.color = 'red';
-            //   road.style.fontSize = '28px';
-            //   winner = 'red';
-            //   changePlayer(null);
-            // }
-          } else if (r === rs && b === a + 7 && c === b + 7 && d === c + 7) {
-            console.log('winner');
-          } else if (
-            r === rs &&
-            b === a + 6 &&
-            c === b + 6 &&
-            d === c + 6 &&
-            rs <= 3 &&
-            rs >= 39
-          ) {
-            console.log('winner');
-          } else if (
-            r === rs &&
-            b === a + 8 &&
-            c === b + 8 &&
-            d === c + 8 &&
-            rs <= 3 &&
-            rs >= 39
-          ) {
-            console.log('winner');
-          }
-        });
-      });
-    }
+redScore.forEach((rs, index)=>{
+  let x= redScore[index+1];
+  let y= redScore[index+2];
+  let z= redScore[index+3];
+  // console.log(rs, x, y, z)
+  Object.values(results).forEach((res)=>{
+    res.forEach((r, index)=>{
+      let a= res[index+1];
+      let b= res[index+2];
+      let c= res[index+3];
+      
+      // console.log(r, a, b, c)
+      if(rs===r&& x===a && y===b && z===c){
+        console.log('winner')
+      }
+    })
+   
+  })
+})
+   
   } else if (x === 'yellow') {
-    // yellowScore.sort(function (a, b) {
-    //   return a - b;
-    // });
-    // for (let res in results) {
-    //   let y = [];
-    //   results[res].forEach(r => {
-    //     yellowScore.forEach(ys => {
-    //       if (r === ys) {
-    //         // console.log(r)
-    //         y.push(r);
-    //         if (y.length === 4) {
-    //           road.innerHTML = 'Player 2 wins!';
-    //           road.style.color = 'gold';
-    //           road.style.fontSize = '28px';
-    //           winner = 'yellow';
-    //           changePlayer(winner);
-    //         }
-    //       }
-    //     });
-    //   });
-    // }
+    
   }
 }
 
