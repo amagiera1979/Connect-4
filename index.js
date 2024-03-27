@@ -45,33 +45,30 @@ const results = {
 };
 
 function checkWinner(x) {
-  let winner = '';
   if (x === 'red') {
     redScore.sort(function (a, b) {
       return a - b;
     });
-redScore.forEach((rs, index)=>{
-  let x= redScore[index+1];
-  let y= redScore[index+2];
-  let z= redScore[index+3];
-  // console.log(rs, x, y, z)
-  Object.values(results).forEach((res)=>{
-    res.forEach((r, index)=>{
-      let a= res[index+1];
-      let b= res[index+2];
-      let c= res[index+3];
-      
-      // console.log(r, a, b, c)
-      if(rs===r&& x===a && y===b && z===c){
-        console.log('winner')
+  }
+  for (let i = 0; i < redScore.length - 3; i++) {
+    let w = redScore[i];
+    let x = redScore[i + 1];
+    let y = redScore[i + 2];
+    let z = redScore[i + 3];
+    // console.log(w, x, y, z)
+    Object.values(results).forEach(res => {
+      for (j = 0; j < res.length - 3; j++) {
+        let a = res[j];
+        let b = res[j + 1];
+        let c = res[j + 2];
+        let d = res[j + 3];
+
+        // console.log(a, b, c, d)
+        if (w === a && x === b && y === c && z === d) {
+          console.log('winner');
+        }
       }
-    })
-   
-  })
-})
-   
-  } else if (x === 'yellow') {
-    
+    });
   }
 }
 
