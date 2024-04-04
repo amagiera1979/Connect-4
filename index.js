@@ -86,12 +86,20 @@ const results = [
 ];
 
 function checkWinner(x) {
-  if (x === 'red') {
-    redScore.sort(function (a, b) {
-      return a - b;
+  // if (x === 'red') {
+  //   redScore.sort(function (a, b) {
+  //     return a - b;
+  //   });
+  // }
+  results.forEach(res => {
+    let winner = [];
+    res.forEach(el => {
+      redScore.forEach(rs => {
+        el === rs ? winner.push(el) : null;
+      });
     });
-  }
- 
+    winner.length === 4 ? console.log('winner') : console.log('0');
+  });
 }
 
 function showDropArrow(index) {
