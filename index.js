@@ -9,6 +9,7 @@ const arrow = document.querySelectorAll('.arrow');
 let arDrop = document.querySelectorAll('.ar');
 const boardCirkle = document.querySelectorAll('.board-cirkle');
 let col = [];
+let winn=false;
 let moveP1 = 0;
 let moveP2 = 0;
 let yellowScore = [];
@@ -85,21 +86,28 @@ const results = [
   [20, 26, 32, 38],
 ];
 
-function checkWinner(x) {
-  // if (x === 'red') {
-  //   redScore.sort(function (a, b) {
-  //     return a - b;
-  //   });
-  // }
+// F. sprawdzania wygranej
+function checkWinner(x, y) {
+
   results.forEach(res => {
     let winner = [];
     res.forEach(el => {
-      redScore.forEach(rs => {
-        el === rs ? winner.push(el) : null;
+      x.forEach(score => {
+        el === score ? winner.push(el) : null;
       });
     });
-    winner.length === 4 ? console.log('winner') : console.log('0');
+    winner.length === 4 ? winn=true : null;
   });
+  // Informacja o wygranej na planszy
+  if (winn === true && y==='red') {
+    road.innerHTML = 'Player 1 wins!';
+    road.style.color = 'red';
+    road.style.fontSize = '28px';
+    } else if (winn === true && y==='yellow') {
+      road.innerHTML = 'Player 2 wins!';
+      road.style.color = 'yellow';
+      road.style.fontSize = '28px';
+    }
 }
 
 function showDropArrow(index) {
@@ -168,27 +176,19 @@ function fallCirkle(cirkle, index) {
   animation.oniteration = fillBoard(col, cirkle, animation);
   // Zmiana gracza przy anulowaniu animacji
   animation.oncancel = changePlayer(col, cirkle, '');
-  // console.log(index);
+ 
 }
 
 // Zmiana gracza, zliczanie ruchów, czyszczenie tab.col i strzałek
 function changePlayer(col, cirkle, winner) {
-  // if (winner === 'red') {
-  // road.innerHTML = 'Player 1 wins!';
-  // road.style.color = 'red';
-  // road.style.fontSize = '28px';
-  // } else if (winner === 'yellow') {
-  //   road.innerHTML = 'Player 2 wins!';
-  //   road.style.color = 'darkyellow';
-  //   road.style.fontSize = '28px';
-  // }
-  if (cirkle.id === 'red-disc') {
+  
+  if (cirkle.id === 'red-disc' && winn===false) {
     moveP1++;
 
     movePlayer1.innerHTML = `Move: ${moveP1}`;
     player1.style.backgroundColor = 'antiquewhite';
     createCirkleYellow();
-  } else {
+  } else if(cirkle.id === 'yellow-disc' && winn===false) {
     moveP2++;
 
     movePlayer2.innerHTML = `Move: ${moveP2}`;
@@ -222,14 +222,17 @@ function fillBoard(col, cirkle, animation) {
   let c = b.pop();
   a.className === 'red-disc' ? redScore.push(c) : yellowScore.push(c);
   let x;
+  let y;
 
-  // console.log(redScore, yellowScore, b);
+  // Sprawdzanie wygranej
   if (redScore.length >= 4 && a.className === 'red-disc') {
-    x = 'red';
-    checkWinner(x);
+    x = redScore;
+    y= 'red';
+    checkWinner(x, y);
   } else if (yellowScore.length >= 4 && a.className === 'yellow-disc') {
-    x = 'yellow';
-    checkWinner(x);
+    x = yellowScore;
+    y= 'yellow';
+    checkWinner(x, y);
   }
 }
 
