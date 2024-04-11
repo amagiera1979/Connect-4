@@ -3,11 +3,11 @@ const player2 = document.querySelector('.p-two');
 const movePlayer1 = document.querySelector('.score-p1');
 const movePlayer2 = document.querySelector('.score-p2');
 const road = document.querySelector('.road');
-// const rowDrop = document.querySelectorAll('.row');
 const restart = document.querySelector('.restart');
 const arrow = document.querySelectorAll('.arrow');
 let arDrop = document.querySelectorAll('.ar');
 const boardCirkle = document.querySelectorAll('.board-cirkle');
+// const viev = window.matchMedia("(max-width: 768px)");
 let col = [];
 let winn = false;
 let moveP1 = 0;
@@ -97,15 +97,14 @@ function checkWinner(x, y) {
     });
     winner.length === 4 ? (winn = true) : null;
   });
+
   // Informacja o wygranej na planszy
   if (winn === true && y === 'red') {
     road.innerHTML = 'Player 1 wins!';
     road.style.color = 'red';
-    road.style.fontSize = '28px';
   } else if (winn === true && y === 'yellow') {
     road.innerHTML = 'Player 2 wins!';
     road.style.color = 'yellow';
-    road.style.fontSize = '28px';
   }
 }
 
